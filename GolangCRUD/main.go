@@ -9,12 +9,14 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 )
 
+
 type Employee struct {
 	Id   int
 	Name string
 	City string
 }
 
+//MySql DB connection!
 func dbConn() (db *sql.DB) {
 	dbDriver := "mysql"
 	dbUser := "root"
@@ -149,7 +151,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 	http.Redirect(w, r, "/", 301)
 }
-
+//UI 
 func main() {
 	log.Println("Server started on: http://localhost:8080")
 	http.HandleFunc("/", Index)
